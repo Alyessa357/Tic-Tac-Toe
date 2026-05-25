@@ -35,7 +35,14 @@ export const CellStyle = styled.button`
     `}
 
     &:hover {
-        box-shadow: 5px 8px ${(props) => props.theme.colors.yellow};
+        // box-shadow: 5px 8px ${(props) => props.theme.colors.yellow};
+        ${(props) => props.$available && css`
+            box-shadow: 5px 8px ${props.theme.colors.yellow};
+            cursor: pointer;
+        `}
+        ${(props) => !props.$available && css`
+            cursor: default;
+        `}
     }
 
     .game-icon {
