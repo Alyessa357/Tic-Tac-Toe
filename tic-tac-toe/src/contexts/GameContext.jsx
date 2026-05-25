@@ -1,37 +1,22 @@
-import { createContext, useState } from "react"
+import { createContext, useReducer } from "react";
 
-export const GameContext = createContext({})
+import {
+    gameReducer,
+    initialState
+} from "../reducers/gameReducer";
 
-export const GameContextProvider = (props) => {
-    const [game, setGame] = useState({
-        board: [1,2,3,4,5,6,7,8,9],
-        player1: {
-            choice: "x",
-            name: "Aly"
-        },
-        player2: {
-            choice: "o",
-            name: "Dev"
-        },
-        turn: "x"
-    })
+export const GameContext = createContext({});
 
-    const updateBoard = (index) => {
-        let updatedBoard = game.board;
-        updatedBoard[index] = game.turn
-        setGame({
-            ...game,
-            board: updatedBoard,
-            turn: game.turn === "x" ? "o" : "x"
-        })
-    }
+export const GameContextProvider = ({ children }) => {
+
+    const [game, dispatch] = useReducer(
+        gameReducer,
+        initialState
+    );
 
     return (
-        <GameContext.Provider value={{
-            game,
-            updateBoard
-        }}>
-            {props.children}
+        <GameContext.Provider value={{ game, dispatch }}>
+            {children}
         </GameContext.Provider>
-    )
-}
+    );
+};

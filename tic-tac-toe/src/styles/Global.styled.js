@@ -11,7 +11,16 @@ export const GlobalStyles = createGlobalStyle`
         }
     }
     
-    body {
+     html, body {
         background-color: ${props => props.theme.colors.primary};
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #root {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
     }
 `

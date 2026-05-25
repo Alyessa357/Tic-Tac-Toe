@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Container } from './Home.styled';
 import { Container, Subtitle, Title } from "../../styles/General.styled";
 import Button from "../../components/Button/Button"
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container columnBased>
 
       <Title>Tic Tac Toe</Title>
       <Subtitle>Play with your friends, higher score wins!</Subtitle>

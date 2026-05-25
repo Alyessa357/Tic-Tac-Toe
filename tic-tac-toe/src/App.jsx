@@ -4,6 +4,7 @@ import { GlobalStyles } from './styles/Global.styled.js';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from "./styles/theme.js"
 import { ThemeContext } from './contexts/ThemeContext';
+import { ModalContextProvider } from './contexts/ModalContext.jsx';
 
 
 function App() {
@@ -13,8 +14,10 @@ function App() {
 
   return (
     <ThemeProvider theme={mode}>
-      <GlobalStyles />
-      <Router />
+      <ModalContextProvider>
+        <GlobalStyles />
+        <Router />
+      </ModalContextProvider>
     </ThemeProvider>
   );
 }
